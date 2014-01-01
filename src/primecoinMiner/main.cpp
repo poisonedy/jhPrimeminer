@@ -1659,22 +1659,11 @@ int main(int argc, char **argv)
 	std::cout << "Username: " << jsonRequestTarget.authUser << std::endl;
 	std::cout << "Password: " << jsonRequestTarget.authPass << std::endl;
 	// decide protocol
-   if( commandlineInput.port == 10034 )
-   {
-	// port 10034 indicates xpt protocol (in future we will also add a -o URL prefix)
+   
 	workData.protocolMode = MINER_PROTOCOL_XPUSHTHROUGH;
 		std::cout << "Using x.pushthrough protocol" << std::endl;
-   }
-   else
-   {
-      workData.protocolMode = MINER_PROTOCOL_GETWORK;
-      printf("Using GetWork() protocol\n");
-      printf("Warning: \n");
-      printf("   GetWork() is outdated and inefficient. You are losing mining performance\n");
-      printf("   by using it. If the pool supports it, consider switching to x.pushthrough.\n");
-      printf("   Just add the port :10034 to the -o parameter.\n");
-      printf("   Example: jhPrimeminer.exe -o http://poolurl.net:10034 ...\n");
-   }
+   
+  
 		// initial query new work / create new connection
    if( workData.protocolMode == MINER_PROTOCOL_GETWORK )
    {
